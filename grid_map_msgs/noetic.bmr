@@ -247,11 +247,11 @@ uint32 stride  # stride of given dimension
 		("GridMapInfo","GridMapInfo"),
 		("Float32MultiArray","Float32MultiArray"),]
 
-	valid = False
+	valid = True
 
 	def update(self, old_msg, new_msg):
 		#No matching field name in old message
-		new_msg.header = self.get_new_class('std_msgs/Header')()
+		new_msg.header = old_msg.info.header
 		self.migrate(old_msg.info, new_msg.info)
 		new_msg.layers = old_msg.layers
 		new_msg.basic_layers = old_msg.basic_layers
@@ -355,7 +355,7 @@ float64 w
 	migrated_types = [
 		("geometry_msgs/Pose","geometry_msgs/Pose"),]
 
-	valid = False
+	valid = True
 
 	def update(self, old_msg, new_msg):
 		new_msg.resolution = old_msg.resolution
